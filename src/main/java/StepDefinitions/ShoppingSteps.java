@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class Shopping {
+public class ShoppingSteps {
 
     private WebDriver driver;
     Main mainPage = new Main();
@@ -64,6 +64,7 @@ public class Shopping {
     @Given("^Click on the last color variation\\.$")
     public void click_on_the_last_color_variation() throws Throwable {
         plp.selectLastColor();
+        plp.getItemColorOnListingUrl(); // Check if the selected color is last color
 
     }
 

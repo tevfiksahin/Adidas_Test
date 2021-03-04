@@ -47,7 +47,14 @@ public abstract class Functions {
         }else{
             System.out.println("Size successfully changed");
         }
+    }
 
+    public void compareColorFunction(WebElement color, String currentUrl ){
+        String colorUrl = color.getAttribute("href");
+        System.out.println(colorUrl);
+        if(colorUrl.equals(currentUrl)){
+            System.out.println("The selected color is already last color");
+        }
     }
 
 }

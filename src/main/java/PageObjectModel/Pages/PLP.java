@@ -84,4 +84,12 @@ public class PLP extends Functions {
         compareUrlFunction(value, "variation___32b4d selected___3Xezl");
     }
 
+    @FindBy(css= "a.variation___32b4d:last-child")
+    private WebElement itemColorOnListing;
+
+    public void getItemColorOnListingUrl(){
+        String currentUrl = driver.getCurrentUrl();
+        compareColorFunction(itemColorOnListing, currentUrl);
+    }
+
 }
