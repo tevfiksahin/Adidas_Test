@@ -22,6 +22,12 @@ public class Bag extends Functions {
         assertionFunction(bagMessage, "YOUR BAG");
     }
 
+    public void verifyBagPage(){
+        String bagLink = "https://www.adidas.co.uk/cart";
+        String  currentUrl = driver.getCurrentUrl();
+        compareUrlFunction(bagLink, currentUrl);
+    }
+
     @FindBy(xpath = "(//div[@class='line-item__attribute___1qTmy'])[1]")
     private WebElement firstItemSize;
 

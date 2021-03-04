@@ -28,20 +28,25 @@ public class ProductListing extends Functions {
     private WebElement productLink;
 
     public void verifyPageAndProduct(){
-        String firstItemLink = "https://www.adidas.co.uk/lite-racer-cln-shoes/BB6895.html";
+        String firstItemLink = "https://www.adidas.co.uk/runfalcon-2.0-shoes/FZ2808.html";
         String  currentUrl = driver.getCurrentUrl();
         System.out.println("current Url "+ currentUrl);
         compareUrlFunction(firstItemLink, currentUrl);
         System.out.println("Correct product page by checking the URL verified");
     }
 
-
+    @FindBy(css = "a.variation___32b4d:first-child")
+    private WebElement firstColor;
 
     @FindBy(css = "a.variation___32b4d:last-child")
     private WebElement lastColor;
 
     public void selectLastColor(){
-        clickFunction(lastColor);
+        if(firstColor==lastColor){
+            System.out.println("There is only one color");
+        }else{
+            clickFunction(lastColor);
+        }
     }
 
     @FindBy(xpath = "(//button[@class='gl-label size___TqqSo'])[1]")
@@ -66,9 +71,9 @@ public class ProductListing extends Functions {
     }
 
     public void verifyPageRefreshed(){
-        String firstItemLink = "https://www.adidas.co.uk/lite-racer-cln-shoes/FW1444.html?forceSelSize=6.5";
+        String expectedUrl = "https://www.adidas.co.uk/runfalcon-2.0-shoes/FZ2808.html";
         String  currentUrl = driver.getCurrentUrl();
-        compareUrlFunction(firstItemLink, currentUrl);
+        compareUrlFunction(expectedUrl, currentUrl);
     }
 
     @FindBy(css = "a.variation___32b4d:last-child")
@@ -78,15 +83,5 @@ public class ProductListing extends Functions {
         String value = classValue.getAttribute("class");
         compareUrlFunction(value, "variation___32b4d selected___3Xezl");
     }
-
-
-
-
-
-
-
-
-
-
 
 }

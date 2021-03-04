@@ -13,6 +13,7 @@ public abstract class Functions {
     WebDriverWait wait = new WebDriverWait(driver,20);
 
     public void clickFunction(WebElement clickElement){
+        wait.until(ExpectedConditions.visibilityOf(clickElement));
         wait.until(ExpectedConditions.elementToBeClickable(clickElement));
         clickElement.click();
     }
@@ -49,10 +50,5 @@ public abstract class Functions {
         }
 
     }
-
-
-
-
-
 
 }

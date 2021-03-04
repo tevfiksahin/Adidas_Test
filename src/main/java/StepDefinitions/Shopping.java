@@ -97,6 +97,8 @@ public class Shopping {
     @Given("^Verify that you are on the cart page by the title is Your Bag\\.$")
     public void verify_that_you_are_on_the_cart_page_by_the_title_is_Your_Bag() throws Throwable {
         bag.verifyBag();
+        // Check if you're in the desired page!
+        bag.verifyBagPage();
         System.out.println("This is your Bag!");
 
     }
@@ -123,9 +125,8 @@ public class Shopping {
     }
 
     @After
-    public void quitDriver() throws InterruptedException{
-        Thread.sleep(3000);
-        quitDriver();
+    public void quitDriver(){
+        Driver.closeDriver();
     }
 
 
