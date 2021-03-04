@@ -117,13 +117,14 @@ public class Shopping {
     @When("^Verify the size is changed\\.$")
     public void verify_the_size_is_changed() throws Throwable {
         bag.verifyItemSize();
-        bag.removeFirstItem();
+        bag.removeItem();
     }
 
     @Then("^Remove that product from your bag\\.$")
     public void remove_that_product_from_your_bag() throws Throwable {
         Thread.sleep(3000);
-        bag.removeFirstItem();
+        bag.removeItem();
+        bag.checkBag();
     }
 
     @After

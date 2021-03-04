@@ -38,8 +38,15 @@ public class Bag extends Functions {
     @FindBy(xpath = "(//button[@class='gl-cta gl-cta--icon gl-cta--no-border'])[1]")
     private WebElement firstItemRemoveButton;
 
-    public void removeFirstItem(){
+    public void removeItem(){
         clickFunction(firstItemRemoveButton);
+    }
+
+    @FindBy(xpath = "//h3[@class='no-gutters col-s-12']")
+    private WebElement emptyBagMessage;
+
+    public void checkBag(){
+        assertionFunction(emptyBagMessage, "YOUR BAG IS EMPTY");
     }
 
 
