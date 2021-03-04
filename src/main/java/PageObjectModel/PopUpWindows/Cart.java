@@ -19,7 +19,6 @@ public class Cart extends Functions {
 
     public void verifyItemAdd(){
         assertionFunction(cartMessage, "SUCCESSFULLY ADDED TO BAG!");
-
     }
 
     @FindBy(xpath = "(//a[@class='gl-cta gl-cta--primary gl-cta--full-width gl-vspace'])[1]")
@@ -28,7 +27,4 @@ public class Cart extends Functions {
     public void viewBag(){
         clickFunction(viewBagButton);
     }
-
-
-
 }

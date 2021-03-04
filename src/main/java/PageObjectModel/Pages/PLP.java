@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProductListing extends Functions {
+public class PLP extends Functions {
     WebDriver driver;
 
-    public ProductListing(){
+    public PLP(){
         driver = Driver.getDriver();
         PageFactory.initElements(driver,this);
     }
@@ -30,9 +30,9 @@ public class ProductListing extends Functions {
     public void verifyPageAndProduct(){
         String firstItemLink = "https://www.adidas.co.uk/runfalcon-2.0-shoes/FZ2808.html";
         String  currentUrl = driver.getCurrentUrl();
-        System.out.println("current Url "+ currentUrl);
+//        System.out.println("current Url "+ currentUrl);
         compareUrlFunction(firstItemLink, currentUrl);
-        System.out.println("Correct product page by checking the URL verified");
+//        System.out.println("Correct product page by checking the URL verified");
     }
 
     @FindBy(css = "a.variation___32b4d:first-child")

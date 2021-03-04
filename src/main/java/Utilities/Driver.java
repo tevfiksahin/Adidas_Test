@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Driver {
     private static WebDriver driver;
 
-    // Constructor
     public static WebDriver getDriver(){
         if(driver==null){
             System.setProperty("webdriver.chrome.driver", "/Users/tevfiksahin/Selenium dependency/drivers/chromedriver");

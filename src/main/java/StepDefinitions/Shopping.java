@@ -2,7 +2,7 @@ package StepDefinitions;
 
 import PageObjectModel.Pages.Bag;
 import PageObjectModel.Pages.Main;
-import PageObjectModel.Pages.ProductListing;
+import PageObjectModel.Pages.PLP;
 import PageObjectModel.PopUpWindows.Cart;
 import PageObjectModel.PopUpWindows.Cookies;
 import PageObjectModel.PopUpWindows.Location;
@@ -22,7 +22,7 @@ public class Shopping {
     Main mainPage = new Main();
     Location location = new Location();
     Cookies cookies = new Cookies();
-    ProductListing plp = new ProductListing();
+    PLP plp = new PLP();
     SignUp signUp = new SignUp();
     Bag bag = new Bag();
     Cart cart = new Cart();
@@ -33,8 +33,10 @@ public class Shopping {
         driver = Driver.getDriver();
         driver.get("https://www.adidas.co.uk");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        // Location is handled
         location.selectCountry();
         location.acceptCountry();
+        // Cookies is accepted
         cookies.acceptCookies();
 
     }
@@ -125,9 +127,9 @@ public class Shopping {
     }
 
     @After
-    public void quitDriver(){
+    public void quitDriver() throws InterruptedException {
+        Thread.sleep(3000);
         Driver.closeDriver();
     }
-
 
 }
