@@ -42,7 +42,6 @@ public abstract class Functions {
 
     public void compareSizeFunction(WebElement firstItemSize, String secondItemSize){
         wait.until(ExpectedConditions.visibilityOf(firstItemSize));
-        System.out.println("Your first size choose"+ firstItemSize.getText());
         if (firstItemSize.getText().equals(secondItemSize)){
             System.out.println("Size was not changed");
         }else{

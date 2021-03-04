@@ -1,3 +1,4 @@
+@SmokeTest
 Feature: Shopping a Product
 
   Scenario: Go to Adidas UK website and test selected item and shopping cart
