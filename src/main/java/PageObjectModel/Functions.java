@@ -34,10 +34,22 @@ public abstract class Functions {
 
     }
 
-    public void compareFunction(WebDriver driver, String productUrl){
-        Assert.assertEquals(driver.getCurrentUrl(), productUrl);
-        System.out.println("current Url "+ driver.getCurrentUrl());
+    public void compareUrlFunction(String productUrl, String currentUrl){
+        Assert.assertEquals(productUrl, currentUrl);
+
     }
+
+    public void compareSizeFunction(WebElement firstItemSize, String secondItemSize){
+        wait.until(ExpectedConditions.visibilityOf(firstItemSize));
+        System.out.println("Your first size choose"+ firstItemSize.getText());
+        if (firstItemSize.getText().equals(secondItemSize)){
+            System.out.println("Size was not changed");
+        }else{
+            System.out.println("Size successfully changed");
+        }
+
+    }
+
 
 
 

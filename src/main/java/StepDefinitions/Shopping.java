@@ -1,9 +1,9 @@
 package StepDefinitions;
 
-import PageObjectModel.Pages.Cart;
+import PageObjectModel.Pages.Bag;
 import PageObjectModel.Pages.Main;
-import PageObjectModel.Pages.PLP;
-import PageObjectModel.PopUpWindows.Bag;
+import PageObjectModel.Pages.ProductListing;
+import PageObjectModel.PopUpWindows.Cart;
 import PageObjectModel.PopUpWindows.Cookies;
 import PageObjectModel.PopUpWindows.Location;
 import PageObjectModel.PopUpWindows.SignUp;
@@ -22,10 +22,10 @@ public class Shopping {
     Main mainPage = new Main();
     Location location = new Location();
     Cookies cookies = new Cookies();
-    PLP plp = new PLP();
+    ProductListing plp = new ProductListing();
     SignUp signUp = new SignUp();
-    Cart cart = new Cart();
     Bag bag = new Bag();
+    Cart cart = new Cart();
 
 
     @Given("^Open Amazon uk page$")
@@ -42,11 +42,12 @@ public class Shopping {
     @Given("^Search for the word running$")
     public void search_for_the_word_running() throws Throwable {
         mainPage.sendKeysToSearchBar();
+        Thread.sleep(1000);
 
     }
 
     @Given("^From the opened page PLP click on the first product\\.$")
-    public void from_the_opened_page_PLP_click_on_the_first_product() throws Throwable {
+    public void from_the_opened_page_PLP_click_on_the_first_product() {
         plp.selectFirstItem();
         signUp.closeSignUpWindow();
 
@@ -66,6 +67,10 @@ public class Shopping {
 
     @Given("^Verify that the page is refreshed with the color change\\.$")
     public void verify_that_the_page_is_refreshed_with_the_color_change() throws Throwable {
+        plp.verifyPageRefreshed();
+        plp.checkClassValue();
+        System.out.println("Page is refreshed");
+
 
     }
 
@@ -79,7 +84,7 @@ public class Shopping {
     @Given("^Verify that you have successfully added one item to the bag\\.$")
     public void verify_that_you_have_successfully_added_one_item_to_the_bag() throws Throwable {
         cart.verifyItemAdd();
-
+        System.out.println("Your item added to cart!");
 
     }
 
@@ -92,6 +97,7 @@ public class Shopping {
     @Given("^Verify that you are on the cart page by the title is Your Bag\\.$")
     public void verify_that_you_are_on_the_cart_page_by_the_title_is_Your_Bag() throws Throwable {
         bag.verifyBag();
+        System.out.println("This is your Bag!");
 
     }
 
@@ -106,17 +112,20 @@ public class Shopping {
 
     @When("^Verify the size is changed\\.$")
     public void verify_the_size_is_changed() throws Throwable {
-
+        bag.verifyItemSize();
+        bag.removeFirstItem();
     }
 
     @Then("^Remove that product from your bag\\.$")
     public void remove_that_product_from_your_bag() throws Throwable {
-
+        Thread.sleep(3000);
+        bag.removeFirstItem();
     }
 
     @After
     public void quitDriver() throws InterruptedException{
         Thread.sleep(3000);
+        quitDriver();
     }
 
 

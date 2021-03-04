@@ -7,28 +7,32 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PLP extends Functions {
+public class ProductListing extends Functions {
     WebDriver driver;
 
-    public PLP(){
+    public ProductListing(){
         driver = Driver.getDriver();
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "(//a[@class='gl-product-card__assets-link'])[1]")
-    private WebElement productLink;
-    public void verifyPageAndProduct(){
-        String firstItemLink = productLink.getAttribute("href");
-        System.out.println("First Item link "+firstItemLink);
-       // compareFunction(driver, firstItemLink);
-
-    }
 
     @FindBy(xpath = "(//div[@class='grid-item___3rAkS'])[1]")
     private WebElement firstItem;
 
     public void selectFirstItem(){
         clickFunction(firstItem);
+    }
+
+    @FindBy(xpath = "(//a[@class='gl-product-card__assets-link'])[1]")
+    // @FindBy(css = "a.gl-product-card__assets-link:first-child")
+    private WebElement productLink;
+
+    public void verifyPageAndProduct(){
+        String firstItemLink = "https://www.adidas.co.uk/lite-racer-cln-shoes/BB6895.html";
+        String  currentUrl = driver.getCurrentUrl();
+        System.out.println("current Url "+ currentUrl);
+        compareUrlFunction(firstItemLink, currentUrl);
+        System.out.println("Correct product page by checking the URL verified");
     }
 
 
@@ -60,6 +64,28 @@ public class PLP extends Functions {
     public void setNewSize(){
         clickFunction(newSize);
     }
+
+    public void verifyPageRefreshed(){
+        String firstItemLink = "https://www.adidas.co.uk/lite-racer-cln-shoes/FW1444.html?forceSelSize=6.5";
+        String  currentUrl = driver.getCurrentUrl();
+        compareUrlFunction(firstItemLink, currentUrl);
+    }
+
+    @FindBy(css = "a.variation___32b4d:last-child")
+    private WebElement classValue;
+
+    public void checkClassValue(){
+        String value = classValue.getAttribute("class");
+        compareUrlFunction(value, "variation___32b4d selected___3Xezl");
+    }
+
+
+
+
+
+
+
+
 
 
 

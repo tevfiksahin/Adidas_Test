@@ -1,4 +1,4 @@
-package PageObjectModel.Pages;
+package PageObjectModel.PopUpWindows;
 
 import PageObjectModel.Functions;
 import Utilities.Driver;
@@ -11,16 +11,15 @@ public class Cart extends Functions {
     WebDriver driver;
 
     public Cart(){
-        driver= Driver.getDriver();
+        driver = Driver.getDriver();
         PageFactory.initElements(driver,this);
     }
-
     @FindBy(xpath = "//h5[@class='gl-heading gl-heading--no-margin gl-modal__title gl-heading--m']")
     private WebElement cartMessage;
 
     public void verifyItemAdd(){
         assertionFunction(cartMessage, "SUCCESSFULLY ADDED TO BAG!");
-        System.out.println("This is your Bag!");
+
     }
 
     @FindBy(xpath = "(//a[@class='gl-cta gl-cta--primary gl-cta--full-width gl-vspace'])[1]")
@@ -29,6 +28,7 @@ public class Cart extends Functions {
     public void viewBag(){
         clickFunction(viewBagButton);
     }
+
 
 
 }

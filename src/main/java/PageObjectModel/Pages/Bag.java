@@ -1,4 +1,4 @@
-package PageObjectModel.PopUpWindows;
+package PageObjectModel.Pages;
 
 import PageObjectModel.Functions;
 import Utilities.Driver;
@@ -11,7 +11,7 @@ public class Bag extends Functions {
     WebDriver driver;
 
     public Bag(){
-        driver = Driver.getDriver();
+        driver= Driver.getDriver();
         PageFactory.initElements(driver,this);
     }
 
@@ -20,7 +20,23 @@ public class Bag extends Functions {
 
     public void verifyBag(){
         assertionFunction(bagMessage, "YOUR BAG");
-        System.out.println("This is your Bag!");
     }
 
+    @FindBy(xpath = "(//div[@class='line-item__attribute___1qTmy'])[1]")
+    private WebElement firstItemSize;
+
+    public void verifyItemSize(){
+        compareSizeFunction(firstItemSize,"M" );
+    }
+
+    @FindBy(xpath = "(//button[@class='gl-cta gl-cta--icon gl-cta--no-border'])[1]")
+    private WebElement firstItemRemoveButton;
+
+    public void removeFirstItem(){
+        clickFunction(firstItemRemoveButton);
+    }
+
+
 }
+
+
